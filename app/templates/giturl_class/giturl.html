@@ -1,0 +1,35 @@
+<h1> SM2KG </h1>
+<form action="" method="post" novalidate>
+	{{ form.hidden_tag() }}
+	<p>
+		{{ form.giturl.label }}<br>
+		{{ form.giturl(size=32) }}<br>
+	</p>
+	{% with messages = get_flashed_messages() %}
+	{% if messages %}
+	<ul>
+		{% for message in messages %}
+		<li>{{ message }}</li>
+		{% endfor %}
+	</ul>
+	{% endif %}
+	{% endwith %}
+	<p> {{ form.submit() }} </p>
+
+	{% if citation %}
+	<p> {{ citation }} </p>
+	{% endif %}
+
+	{% if installation %}
+	<p> {{ installation }} </p>
+	{% endif %}
+
+	{% if description %}
+	<p> {{ description }} </p>
+	{% endif %}
+
+	{% if invocation %}
+	<p> {{ invocation }} </p>
+	{% endif %}
+
+</form>

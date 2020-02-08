@@ -18,7 +18,10 @@ develop-eggs
 lib
 lib64
 __pycache__
+
+#tommy's additions
 share
+pyvenv.cfg
 
 # Installer logs
 pip-log.txt

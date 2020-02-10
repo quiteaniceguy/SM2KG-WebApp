@@ -1,9 +1,24 @@
-<h1> SM2KG </h1>
+{% extends "bootstrap/base.html" %}
+{% import "bootstrap/wtf.html" as wtf%}
+
+{% block title %}
+SM2KG
+{% endblock %}
+
+{% block content %}
+<div class="container">
+
+<div class="jumbotron">
+  <h1>SM2KG</h1>
+  <p>Software Metadata 2 Knowledge Graphs: A tool for automatically extracting relevant information from readme files</p>
+  <!-- <p><a class="btn btn-primary btn-lg" href="#" role="button">Learn more</a></p> -->
+</div>
+
+<!--<h1> SM2KG </h1>-->
 <form action="" method="post" novalidate>
 	{{ form.hidden_tag() }}
 	<p>
-		{{ form.giturl.label }}<br>
-		{{ form.giturl(size=32) }}<br>
+		{{ wtf.form_field(form.giturl) }}<br>
 	</p>
 	{% with messages = get_flashed_messages() %}
 	{% if messages %}
@@ -17,19 +32,53 @@
 	<p> {{ form.submit() }} </p>
 
 	{% if citation %}
-	<p> {{ citation }} </p>
+		<div class="panel panel-primary">
+		  <!-- Default panel contents -->
+		  <div class="panel-heading">Citations</div>
+			  <div class="panel-body">
+			  	<div class="well">
+				    <p> {{ citation }} </p>
+				</div>
+			  </div>
+		</div>
 	{% endif %}
 
 	{% if installation %}
-	<p> {{ installation }} </p>
+		<div class="panel panel-primary">
+		  <!-- Default panel contents -->
+		<div class="panel-heading">Installation</div>
+			<div class="panel-body">
+		  		<div class="well">
+	    			<p> {{ installation }} </p>
+	    		</div>
+		  	</div>
+		</div>
 	{% endif %}
 
 	{% if description %}
-	<p> {{ description }} </p>
+		<div class="panel panel-primary">
+		  <!-- Default panel contents -->
+		    <div class="panel-heading">Description</div>
+			  	<div class="panel-body">
+  					<div class="well">
+			    		<p> {{ description }} </p>
+				</div>
+			</div>
+		</div>
 	{% endif %}
 
 	{% if invocation %}
-	<p> {{ invocation }} </p>
+		<div class="panel panel-primary">
+		  <!-- Default panel contents -->
+		  	<div class="panel-heading">Invocation</div>
+				<div class="panel-body">
+				  	<div class="well">
+		    			<p> {{ invocation }} </p>
+			  		</div>
+		s	  </div>
+		</div>
 	{% endif %}
 
 </form>
+</div>
+{% endblock %}

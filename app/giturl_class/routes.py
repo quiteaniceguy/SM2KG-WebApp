@@ -20,7 +20,6 @@ def urlPage():
             invocation = data['invocation.sk']
             description = data['description.sk']
 
-
     return render_template('giturl_class/giturl.html',
                            form = form,
                            citation = citation,
@@ -29,6 +28,11 @@ def urlPage():
                            description = description)
 
 
+@bp.route('/about', methods = ['GET'])
+def aboutPage():
+    return render_template('aboutpage/aboutpage.html')
 
 
-
+@bp.route('/help', methods = ['GET'])
+def helpPage():
+    return render_template('helppage/helppage.html')

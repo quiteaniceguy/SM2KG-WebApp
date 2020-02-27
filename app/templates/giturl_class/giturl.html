@@ -1,24 +1,66 @@
 {% extends "bootstrap/base.html" %}
 {% import "bootstrap/wtf.html" as wtf%}
 
+<!DOCTYPE html>
+<html>
 {% block title %}
 SM2KG
 {% endblock %}
 
 {% block content %}
+
+{% block styles %}
+{{super()}}
+<link rel="stylesheet"
+      href="{{url_for('static', filename='giturlstyle.css')}}">
+{% endblock %}
+
 <div class="container">
+
+<nav class="navbar navbar-default">
+  <div class="container-fluid">
+    <div class="navbar-header">
+      <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#myNavbar">
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+      </button>
+      <a class="navbar-brand" href="#">SoMEF</a>
+    </div>
+    <div class="collapse navbar-collapse" id="myNavbar">
+      <ul class="nav navbar-nav">
+        <li class="active"><a href="/index">Home</a></li>
+      </ul>
+      <ul class="nav navbar-nav navbar-right">
+        <li><a href="/about">About</a></li>
+        <li><a href="/help">Help</a></li>
+      </ul>
+    </div>
+  </div>
+</nav>
+
 
 <div class="jumbotron">
   <h1>SM2KG</h1>
-  <p>Software Metadata 2 Knowledge Graphs: A tool for automatically extracting relevant information from readme files</p>
+  <p>Software Metadata 2 Knowledge Graphs: A tool for automatically extracting relevant information from README files</p>
   <!-- <p><a class="btn btn-primary btn-lg" href="#" role="button">Learn more</a></p> -->
 </div>
 
-<!--<h1> SM2KG </h1>-->
 <form action="" method="post" novalidate>
 	{{ form.hidden_tag() }}
 	<p>
-		{{ wtf.form_field(form.giturl) }}<br>
+		<div class = "row">
+			<div class="col-sm-10">
+				<div class = form-group>
+					{{ wtf.form_field(form.giturl) }}
+				</div>
+			</div>
+			<div class="col-sm-2">
+				<div class = form-group>
+					{{ wtf.form_field(form.threshold)}} <br>
+				</div>
+			</div>	
+		</div>
 	</p>
 	{% with messages = get_flashed_messages() %}
 	{% if messages %}
@@ -37,6 +79,7 @@ SM2KG
 		  <div class="panel-heading">Citations</div>
 			  <div class="panel-body">
 			  	<div class="well">
+			  		<p class = "highlightme"> This is an example citation that should be highlighted </p>
 				    <p> {{ citation }} </p>
 				</div>
 			  </div>
@@ -75,10 +118,11 @@ SM2KG
 				  	<div class="well">
 		    			<p> {{ invocation }} </p>
 			  		</div>
-		s	  </div>
+			  </div>
 		</div>
 	{% endif %}
 
 </form>
 </div>
 {% endblock %}
+</html>
